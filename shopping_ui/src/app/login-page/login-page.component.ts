@@ -13,10 +13,19 @@ export class LoginPageComponent {
 
   }
     login(){
-      this.httpClient.httpPost({}).subscribe(
+      this.httpClient.httpPost({},"https://localhost:7202/api/login/login").subscribe(
         (resp :any) =>{
           if(resp){
           localStorage.setItem("jwtToken",resp.data);
+          }
+        }
+      );
+    }
+    createUser(){
+      this.httpClient.httpPost({},"https://localhost:7202/api/login/createUser").subscribe(
+        (resp :any) =>{
+          if(resp){
+            console.log(resp.data);
           }
         }
       );
